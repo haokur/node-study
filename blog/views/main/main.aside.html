@@ -1,0 +1,35 @@
+<div class="card user-about">
+    {% if userinfo.username %}
+        {{userinfo.username}}
+        {% if userinfo.isAdmin %}
+            <a href="/admin">进入管理员页面</a>
+        {% endif %}
+        <div class="action-bar action-bar-margin">
+            <button class="btn btn-primary" id="logout">退出登陆</button>
+        </div>
+
+    {% else %}
+    <form id="regsiter" class="regsiter-wrap" style="display:none">
+        <input type="text" id="username" class="form-control" name="username" placeholder="请输入用户名">
+        <input type="password" class="form-control" name="password" placeholder="请输入密码">
+        <input type="password" name="passwordRepeat" class="form-control" placeholder="请重复输入密码">
+        <div class="action-bar action-bar-margin">
+            <button class="btn btn-primary" type="button">注册</button>
+        </div>
+        <div class="userform-tabbar">
+            已有账号,去<a href="javascript:;" id="to-login">登陆</a>
+        </div>
+    </form>
+
+    <form id="login" class="login-wrap">
+        <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+        <input type="password" name="password" class="form-control" placeholder="请输入密码">
+        <div class="action-bar action-bar-margin">
+            <button class="btn btn-primary" type="button">登陆</button> 
+        </div>
+        <div class="userform-tabbar">
+            没有账号,去<a href="javascript:;" id="to-regsiter">注册</a>
+        </div>
+    </form>
+    {% endif %}
+</div>

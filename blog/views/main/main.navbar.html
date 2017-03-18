@@ -1,0 +1,15 @@
+<div class="container">
+    <ul class="nav navbar-nav">
+        {% for cate in categories %}
+            {% if cate.id.toString()==categoryNow %}
+                <li class="active">
+                    <a href="/?page={{pIndex}}&category={{cate._id.toString()}}">{{cate.catename}}</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="/?page={{pIndex}}&category={{cate._id.toString()}}">{{cate.catename}}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+{% extends '../admin.layout.html' %}
+
+{% block main %}
+    <ol class="breadcrumb">
+        <li><a href="/admin">管理首页</a></li>
+        <li><a href="#">用户列表</a></li>
+    </ol>
+
+    <h3>用户列表</h3>
+    <table class="table table-hover table-striped">
+        <tr>
+            <th>分类ID</th>
+            <th>分类名称</th>
+            <th>操作</th>
+        </tr>
+        {% for category in categories %}
+            <tr>
+                <td>{{category._id.toString()}}</td>
+                <td>{{category.catename}}</td>
+                <td>
+                    <a href="/admin/category/edit?_id={{category._id.toString()}}">编辑</a>
+                    <a href="/admin/category/delete?_id={{category._id.toString()}}#">删除</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% include '../pager.html' %}
+
+
+{% endblock %}

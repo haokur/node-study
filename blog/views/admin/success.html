@@ -1,0 +1,21 @@
+{% extends './admin.layout.html' %}
+
+
+{% block main%}
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        成功提示
+    </div>
+  <div class="panel-body">
+    {{message}}
+  </div>
+  <div class="panel-footer">
+      {% if url %}
+        <a href="{{url}}">跳转</a>
+      {% else %}
+        <a href="javascript:window.history.back();">返回上一步</a>
+      {% endif %}
+  </div>
+</div>
+{% endblock%}

@@ -1,0 +1,27 @@
+{% extends './main.layout.html' %}
+
+
+{% block main %}
+    <!-- 文章列表 -->
+    <ul class="article-list">
+        {% for data in contents %}
+            <li class="article-item card">
+                <h3>{{data.title}}</h3>
+                <div class="article-timebar">
+                    <span><b>分类:</b>{{data.category.catename}}</span>
+                    <span><b>作者:</b>{{data.user.username}}</span>
+                    <span><b>发表时间:</b>{{data.addtime|date('Y年m月d日 H:i:s',-8*60)}}</span>
+                    <span><b>浏览数:</b>{{data.views}}</span>
+                </div>
+                <div class="article-content">
+                    {{data.description}}
+                </div>
+                <div>
+                    <a href="/view/{{data._id.toString()}}" class="article-seemore btn btn-primary">查看详情</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    
+    {% include '../admin/pager.html' %}
+{% endblock %}

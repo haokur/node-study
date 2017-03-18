@@ -1,0 +1,35 @@
+{% extends '../admin.layout.html' %}
+
+{% block main %}
+    <ol class="breadcrumb">
+        <li><a href="/admin">管理首页</a></li>
+        <li><a href="#">分类添加</a></li>
+    </ol>
+
+    <h3>分类添加</h3>
+    
+    <form role="form" method="post">
+        <div class="form-group">
+            <label for="category">分类</label> 
+            <select name="category" id="category" class="form-control">
+                {% for category in categories %}
+                <option value="{{category._id.toString()}}">{{category.catename}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" id="title" name="title" class="form-control" placeholder="请输入分类名称">
+        </div>
+        <div class="form-group">
+            <label for="description">简介</label>
+            <input type="text" id="description" name="description" class="form-control" placeholder="请输入分类名称">
+        </div>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea id="content" name="content" rows="10" class="form-control" placeholder="请输入分类名称"></textarea>
+        </div>
+        <button type="submit" class="btn btn-default">保存</button>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends './main.layout.html' %}
+
+
+{% block main %}
+    <!-- 文章列表 -->
+    <div class="card article-item">
+        <h3>{{articleContent.title}}</h3>
+        <div class="article-timebar">
+            <span><b>分类:</b>{{articleContent.category.catename}}</span>
+            <span><b>作者:</b>{{articleContent.user.username}}</span>
+            <span><b>发表时间:</b>{{articleContent.addtime|date('Y年m月d日 H:i:s',-8*60)}}</span>
+            <span><b>浏览数:</b>{{articleContent.views}}</span>
+        </div>
+        <div class="article-content">
+            {{articleContent.content}}
+        </div>
+    </div>
+    {% include './comment.html' %}
+{% endblock %}

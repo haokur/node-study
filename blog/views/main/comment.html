@@ -1,0 +1,30 @@
+<div class="card comment-wrap" id="comment-list">
+    {% if !userinfo._id %}
+    <div class="not-login">
+        评论前请先登录
+    </div>
+    {% else %}
+    <div class="has-login">
+        <div class="comment-box">
+            <input type="hidden" id="content-id" value="{{articleId}}">
+            <textarea name="content" class="form-control" placeholder="说点什么吧" id="comment-content"></textarea>
+            <button type="button" id="submit-comment" class="btn btn-primary action-bar-margin" @click="submitComment">提交评论</button>
+        </div>
+    </div>
+    {% endif %}
+    <ul class="comment-list" v-if="commentList.length>0">
+        <li class="comment-item" v-for="item in commentList">
+            <span v-text="item.user.username"></span>
+            <span v-text="item.addtime"></span>
+            <div v-text="item.content">
+            </div>
+        </li>
+    </ul>
+    <nav aria-label="Page navigation" v-if="totalPage>0">
+        <ul class="pagination">
+            <li v-for="item in totalPage" :class="{'active':item===indexNow}">
+                <a href="javascript:;" @click="changePage(item)" v-text="item"></a>
+            </li>
+        </ul>
+    </nav>
+</div>

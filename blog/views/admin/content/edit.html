@@ -1,0 +1,40 @@
+{% extends '../admin.layout.html' %}
+
+{% block main %}
+    <ol class="breadcrumb">
+        <li><a href="/admin">管理首页</a></li>
+        <li><a href="#">分类编辑</a></li>
+    </ol>
+
+    <h3>分类编辑</h3>
+    
+    <form role="form" method="post">
+        <input type="hidden" value="{{data._id.toString()}}" name="_id">
+        <div class="form-group">
+            <label for="category">分类{{data.category.toString()}}</label> 
+            <select name="category" id="category" class="form-control">
+                {% for category in categories %}
+                    {% if category._id.toString() === data.category.toString() %}
+                        <option value="{{category._id.toString()}}" selected>{{category.catename}}</option>
+                    {% else %}
+                        <option value="{{category._id.toString()}}">{{category.catename}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">标题</label>
+            <input type="text" id="title" name="title" value="{{data.title}}" class="form-control" placeholder="请输入分类名称">
+        </div>
+        <div class="form-group">
+            <label for="description">简介</label>
+            <input type="text" id="description" name="description" value="{{data.description}}" class="form-control" placeholder="请输入分类名称">
+        </div>
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea id="content" name="content" rows="10" class="form-control" placeholder="请输入分类名称">{{data.content}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-default">保存</button>
+    </form>
+
+{% endblock %}
