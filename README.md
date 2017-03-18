@@ -5,6 +5,7 @@
 
 // cmd 1
 git clone https://github.com/haokur/node-study.git
+cd node-study
 cd blog
 
 cnpm -g install supervisor
