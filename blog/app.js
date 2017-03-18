@@ -82,6 +82,7 @@ mongoose.connect('mongodb://localhost:27017/blog',err=>{
     }
     else {
         console.log('数据库连接成功')
+        console.log('server on http://localhost:8081')
         app.listen(8081)
     }
 })
